@@ -1,13 +1,8 @@
 <div class="container">
-  <div class="main-body">
-
-    <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="main-breadcrumb">
       <ol class="breadcrumb">
-        {{!-- <li class="breadcrumb-item"><a href="index.html">Home</a></li> --}}
       </ol>
     </nav>
-    <!-- /Breadcrumb -->
 
     <div class="row gutters-sm">
       <div class="col-md-4 mb-3">
@@ -20,7 +15,7 @@
                 <h4>{{user.username}}</h4>
                 <p class="text-secondary mb-1">{{user.address}}</p>
                 <p class="text-muted font-size-sm">{{user.phone}}</p>
-                <a href="addmedication"><button class="btn btn-primary">Add Medication</button></a>
+                <p href="addmedication"><button id="add-med-button" class="btn btn-primary">Add Medication</button></p>
                 <button class="btn btn-primary">Follow</button>
                 <button class="btn btn-primary">Message</button>
               </div>
@@ -69,12 +64,13 @@
             </div>
           </div>
         </div>
-        <div class="row gutters-sm">{{#each meds as | med |}}
+        <div class="row gutters-sm">
+          {{#each meds as | med |}}
           <div class="col-sm-6 mb-3">
             <div class="card h-100">
               <div class="card-body">
-                <h6 class="d-flex align-items-center mb-3"><i
-                  class="material-icons text-info mr-2">{{med.name}}</i>&nbspInfo
+                <h6 class="d-flex justify-items-center text-center mb-3"><i
+                    class="material-icons text-info mr-2">{{med.name}}</i>&nbsp
                 </h6>
                 <small>Dose</small>
                 <div class=" mb-3" style="height: 5px">
@@ -96,7 +92,7 @@
                 <div class=" mb-3" style="height: 5px">
                   {{med.refill}}
                 </div>
-                <button onclick="deleteMed({{med.med_id}})">Delete medication</button>
+                <button id='med-{{med.med_id}}' class="del-med-btn"> Delete medication</button>
               </div>
             </div>
           </div>
@@ -104,7 +100,5 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
-
-<script src="./js/landing.js"></script>
+<script src="./js/userprofile.js"></script>
