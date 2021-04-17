@@ -12,22 +12,15 @@ router.get('/', async (req, res) => {
 
 router.get('/logout', async (req, res) => {
     try {
-        req.session.save(() => {
-            req.session.logged_in = false
-        })
         res.render('landing')
     } catch (err) {
         res.status(500).json(err);
     }
 })
 
-router.get('/signup', async(req, res) => {
-    try {
-        res.render('signup') 
-    } catch (err) {
-        res.status(500).json(err)
-    }
-})
+// router.get('/landing', async(req, res) => {
+
+// })
 
 router.get('/userprofile', withAuth, async (req, res) => {
     try {
@@ -38,8 +31,6 @@ router.get('/userprofile', withAuth, async (req, res) => {
                 },
           attributes: { exclude: ['password'] }
         })
-        console.log(req.session)
-        console.log(userData)
         const user = userData.get({ plain: true });
 
         // Get all Meds and JOIN with user data
@@ -56,12 +47,6 @@ router.get('/userprofile', withAuth, async (req, res) => {
     }
 });
 
-router.get('/addmedication', withAuth, async (req, res) => {
-    try {
-        res.render('add-medication')
-    } catch (err) {
-        res.status(500).json(err)
-    }
-})
+
 
 module.exports = router;

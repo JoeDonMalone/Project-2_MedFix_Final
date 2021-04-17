@@ -6,3 +6,4 @@ router.use('/medication', medicationRoutes)
 router.use('/users', userRoutes);
 
 module.exports = router;
+

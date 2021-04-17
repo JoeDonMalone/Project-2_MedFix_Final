@@ -13,7 +13,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/userprofile');
+      document.location.replace('/login');
     } else {
       alert(response.statusText);
     }
@@ -23,4 +23,3 @@ const signupFormHandler = async (event) => {
 document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
-

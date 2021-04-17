@@ -1,5 +1,6 @@
 "use strict";
 const nodemailer = require("nodemailer");
+require('.dotenv').config();
 
 async function main() {
   let testAccount = await nodemailer.createTestAccount();
@@ -9,14 +10,14 @@ async function main() {
     port: 587,
     secure: false,
     auth: {
-      user: 'noreply.medication.reminder@gmail.com',
-      pass: 'pRgNaENxGQxP',
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
     },
   });
 
   let info = await transporter.sendMail({
     from: '"Medication reminder" <noreply.medication.reminder@gmail.com>',
-    to: "ivan.zabrodin@tamu.edu, pyrat32@gmail.com",
+    to: "joe.d.malone@gmail.com, pyrat32@gmail.com",
     subject: "Hello ✔",
     text: "Hello world?",
     html: "<b>Hello world?</b>",
